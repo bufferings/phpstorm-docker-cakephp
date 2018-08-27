@@ -1,0 +1,15 @@
+version: '3'
+services:
+  php-cli:
+    build: ./docker
+    command: php -v
+    volumes:
+      - .:/app
+      - ./docker/php.ini:/usr/local/etc/php/php.ini
+  php-web:
+    build: ./docker
+    volumes:
+      - .:/app
+      - ./docker/php.ini:/usr/local/etc/php/php.ini
+    ports:
+      - "8000:80"
