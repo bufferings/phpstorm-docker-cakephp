@@ -14,9 +14,7 @@ RUN apt-get update && apt-get install -y \
  && a2enmod rewrite \
  && NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) \
  && docker-php-ext-configure zip --with-libzip \
- && docker-php-ext-install -j${NPROC} zip \
- && docker-php-ext-install -j${NPROC} intl \
- && docker-php-ext-install -j${NPROC} pdo_mysql
+ && docker-php-ext-install -j${NPROC} zip intl pdo_mysql
 
 # Composer
 ENV COMPOSER_HOME /tmp
