@@ -1,51 +1,41 @@
-# CakePHP Application Skeleton
+# PhpStorm + Docker and CakePHP development
 
-[![Build Status](https://img.shields.io/travis/cakephp/app/master.svg?style=flat-square)](https://travis-ci.org/cakephp/app)
-[![Total Downloads](https://img.shields.io/packagist/dt/cakephp/app.svg?style=flat-square)](https://packagist.org/packages/cakephp/app)
+Please check this article:
 
-A skeleton for creating applications with [CakePHP](https://cakephp.org) 3.x.
+https://medium.com/@bufferings/phpstorm-docker-and-cakephp-development-9327ee767838
 
-The framework source code can be found here: [cakephp/cakephp](https://github.com/cakephp/cakephp).
+# Sample commands
 
-## Installation
+## Composer
 
-1. Download [Composer](https://getcomposer.org/doc/00-intro.md) or update `composer self-update`.
-2. Run `php composer.phar create-project --prefer-dist cakephp/app [app_name]`.
-
-If Composer is installed globally, run
-
-```bash
-composer create-project --prefer-dist cakephp/app
+```
+❯ docker-compose run --rm php-cli composer --version
+gosu user to www-data
+Composer version 1.7.2 2018-08-16 16:57:12
 ```
 
-In case you want to use a custom app dir name (e.g. `/myapp/`):
+## PHPCS
 
-```bash
-composer create-project --prefer-dist cakephp/app myapp
+```
+❯ docker-compose run --rm php-cli vendor/bin/phpcs --version
+gosu user to www-data
+PHP_CodeSniffer version 3.3.1 (stable) by Squiz (http://www.squiz.net)
 ```
 
-You can now either use your machine's webserver to view the default home page, or start
-up the built-in webserver with:
+## PHPMD
 
-```bash
-bin/cake server -p 8765
+```
+❯ docker-compose run --rm php-cli vendor/bin/phpmd --version
+gosu user to www-data
+PHPMD 2.6.0
 ```
 
-Then visit `http://localhost:8765` to see the welcome page.
+## Start Apache
 
-## Update
+```
+❯ docker-compose up -d
+Starting phpstormdockercakephp_php-web_1 ... 
+Starting phpstormdockercakephp_php-web_1 ... done
+```
 
-Since this skeleton is a starting point for your application and various files
-would have been modified as per your needs, there isn't a way to provide
-automated upgrades, so you have to do any updates manually.
-
-## Configuration
-
-Read and edit `config/app.php` and setup the `'Datasources'` and any other
-configuration relevant for your application.
-
-## Layout
-
-The app skeleton uses a subset of [Foundation](http://foundation.zurb.com/) (v5) CSS
-framework by default. You can, however, replace it with any other library or
-custom styles.
+You can access the app with `localhost:8000`
